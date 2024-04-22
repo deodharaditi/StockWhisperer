@@ -1,0 +1,15 @@
+torch
+numpy
+pandas
+os
+math
+torch.nn 
+torch.optim 
+torch.nn.functional 
+tqdm
+matplotlib.pyplot
+sklearn
+json
+streamlit
+seaborn
+plotly.graph_objects
