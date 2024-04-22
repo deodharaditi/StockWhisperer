@@ -2,9 +2,6 @@ streamlit==1.24.1
 torch==2.2
 pandas>2.0
 numpy<=1.25.1
-torch.optim
-torch.nn
-torch.nn.functional
 tqdm==4.62.3
 matplotlib==3.4.3
 scikit-learn==0.24.2
