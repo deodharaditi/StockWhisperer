@@ -1,0 +1,1 @@
+pip install streamlit==1.33.0
