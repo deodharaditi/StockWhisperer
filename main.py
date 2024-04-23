@@ -58,7 +58,7 @@ class CNN_BiLSTM_AM(nn.Module):
         return output
 
 
-def load_data(work_dir):
+def load_data():
   with open(f"test_data.json", 'r') as file:
     test_data = json.load(file)
  
