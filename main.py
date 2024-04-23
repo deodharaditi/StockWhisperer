@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error,mean_absolute_percentage_error
 import json
 
-work_dir= r"D:\\Northeastern\\Spring 2024\\ADSA\\capstone\\" 
+#work_dir= r"D:\\Northeastern\\Spring 2024\\ADSA\\capstone\\" test_data.json
 
 
 #Model Implementation
@@ -59,13 +59,13 @@ class CNN_BiLSTM_AM(nn.Module):
 
 
 def load_data(work_dir):
-  with open(f"{work_dir}/test_data.json", 'r') as file:
+  with open(f"test_data.json", 'r') as file:
     test_data = json.load(file)
  
-  with open(f"{work_dir}/mean.json", 'r') as file:
+  with open(f"mean.json", 'r') as file:
     mean = json.load(file)
   
-  with open(f"{work_dir}/std.json", 'r') as file:
+  with open(f"std.json", 'r') as file:
     std = json.load(file)
 
   return test_data, mean, std
@@ -243,10 +243,10 @@ def data_loader(data, mean, std, sequence_length, overlap):
   return test_loader
 
 
-def load_model(work_dir,model_name, input_dim, hidden_dim, output_dim, sequence_length, dropout_prob):
+def load_model(model_name, input_dim, hidden_dim, output_dim, sequence_length, dropout_prob):
   device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
   model = CNN_BiLSTM_AM(input_dim, hidden_dim, output_dim, sequence_length, dropout_prob).to(device)
-  model.load_state_dict(torch.load(f"{work_dir}\\{model_name}", map_location=device))
+  model.load_state_dict(torch.load(f"{model_name}", map_location=device))
   return model, device
 
 def evaluate(model,test_loader, device):
@@ -290,7 +290,7 @@ def predict(input_param, input_stock):
   print(f"Stock Name: {stock}")
 
   t,m,s = load_data(work_dir)
-  model, device = load_model(work_dir,'model.state', input_dim, hidden_dim, output_dim, sequence_length, dropout_prob)
+  model, device = load_model('model.state', input_dim, hidden_dim, output_dim, sequence_length, dropout_prob)
   test_data = parameter_updater(t,stock,parameters)
   #print(test_data)
   test_loader = data_loader(test_data, np.array(m[stock]), np.array(s[stock]), sequence_length, overlap)
