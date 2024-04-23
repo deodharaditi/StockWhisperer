@@ -1,4 +1,4 @@
-streamlit
+streamlit==1.11.0
 torch==2.2
 pandas>2.0
 numpy<=1.25.1
