@@ -289,7 +289,7 @@ def predict(input_param, input_stock):
   stock = input_stock
   print(f"Stock Name: {stock}")
 
-  t,m,s = load_data(work_dir)
+  t,m,s = load_data()
   model, device = load_model('model.state', input_dim, hidden_dim, output_dim, sequence_length, dropout_prob)
   test_data = parameter_updater(t,stock,parameters)
   #print(test_data)
