@@ -1,1 +1,4 @@
-pip install streamlit==1.33.0
+# setup.sh
+pip install --upgrade pip
+pip cache purge
+pip install --force-reinstall streamlit==1.33.0
