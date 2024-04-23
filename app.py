@@ -163,9 +163,9 @@ def main():
 
   input_data = add_sidebar(selected_company)
   in_data = ['revenue', 'cash_and_equiv', 'total_assets', 'total_liabilities', 'retained_earnings', 'total_liabilities_and_equity', 'cf_cfo']
-  for i in input_data:
-      if input_data[i] in in_data:
-          input_data[i] *= 1000000
+  for k,v in input_data.items():
+      if k in in_data:
+          input_data[k] *= 1000000
   #print(input_data)
 
   with st.container():
