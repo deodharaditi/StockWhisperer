@@ -28,14 +28,14 @@ def add_sidebar(company):
     st.sidebar.header("Model Paramters")
 
     slider_labels = [
-            ("Revenue ($)", "revenue"),
+            ("Revenue (MM)", "revenue"),
             ("Earning per Share Basic ($)", "eps_basic"),
-            ("Cash and Equivalent Assets ($)", "cash_and_equiv"),
-            ("Total Assets ($)", "total_assets"),
-            ("Total Liabilities ($)", "total_liabilities"),
-            ("Retained Earnings ($)", "retained_earnings"),
-            ("Total Liabilities and Equity ($)", "total_liabilities_and_equity"),
-            ("Operation Cash Flow ($)", "cf_cfo"),
+            ("Cash and Equivalent Assets (MM)", "cash_and_equiv"),
+            ("Total Assets (MM)", "total_assets"),
+            ("Total Liabilities (MM)", "total_liabilities"),
+            ("Retained Earnings (MM)", "retained_earnings"),
+            ("Total Liabilities and Equity (MM)", "total_liabilities_and_equity"),
+            ("Operation Cash Flow (MM)", "cf_cfo"),
             ("Total Assets Growth", "total_assets_growth"),
             ("Equity to Assets Ratio", "equity_to_assets"),
         ]
@@ -44,11 +44,19 @@ def add_sidebar(company):
 
 
     for label, key in slider_labels:
-        input_dict[key] = st.sidebar.slider(label,
-                                            min_value=float(0),
-                                            max_value=float(data[key].max()),
-                                            value=float(data[key][74]),
-                                            key=f"{key}_{company}"
+        if data[key].max() > 1000000:
+            input_dict[key] = st.sidebar.slider(label,
+                                                min_value=float(0),
+                                                max_value=float(data[key].max())/1000000,
+                                                value=float(data[key][74])/1000000,
+                                                key=f"{key}_{company}"
+        )
+        else:
+            input_dict[key] = st.sidebar.slider(label,
+                                                min_value=float(0),
+                                                max_value=float(data[key].max()),
+                                                value=float(data[key][74]),
+                                                key=f"{key}_{company}"
         )
 
     return input_dict
@@ -154,6 +162,10 @@ def main():
   selected_company  = add_dropdown()
 
   input_data = add_sidebar(selected_company)
+  in_data = ['revenue', 'cash_and_equiv', 'total_assets', 'total_liabilities', 'retained_earnings', 'total_liabilities_and_equity', 'cf_cfo']
+  for i in input_data:
+      if input_data[i] in in_data:
+          input_data[i] *= 1000000
   #print(input_data)
 
   with st.container():
