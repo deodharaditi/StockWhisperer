@@ -2,6 +2,14 @@
 
 Welcome to the StockWhisperer App repository! This Streamlit app utilizes deep learning to predict stock prices for the next quarter based on fundamental financial indicators. The app is designed to provide valuable insights to investors, guiding their investment strategies and maximizing returns.
 
+## Demo 🎥
+
+Check out the demo of the StockWhisperer App on YouTube: [Demo Video](https://youtu.be/74h6WyrJ9q4)
+
+## Deployed App 🚀
+
+Access the actual StockWhisperer App deployed on Streamlit: [StockWhisperer App](https://stockwhisperer.streamlit.app/)
+
 ## Tech Stack ℹ️
 
 - **Streamlit**: A popular Python library for building interactive web apps.
@@ -58,7 +66,7 @@ Follow these steps to run the StockWhisperer App locally:
 
 4. **Run the App**: Launch the Streamlit app by executing the following command:
    ```
-   streamlit run app.py
+   streamlit run main.py
    ```
 
 5. **Access the App**: Once the app is running, open your web browser and navigate to the provided URL to access the StockWhisperer App.
